@@ -80,7 +80,7 @@ let displayCurrentWeather = function(weather) {
         name: weather.name,
         temp: weather.main.temp,
         description: weatherDes,
-        feelslike: weather.main.feels_like,
+        feelsLike: weather.main.feels_like,
         humidity: weather.main.humidity,
         windspeed: weather.wind.speed
     });
@@ -92,6 +92,8 @@ let displayForeCastWeather = function(forecast) {
     forecastArr = forecast.list;
     for (var i = 4; i < forecastArr.length; i = i + 8) {
         let Date = moment(forecastArr[i].dt_txt).format("MMM Do, YYYY");
+        let forecastCard = document.createElement("div");
+        forecastCard.classList = 'col-12 col-md-4 col-xl-3';
         let displayDayForecast = document.createElement("div");
         displayDayForecast.classList = 'card';
         displayDayForecast.setAttribute('style', 'max-width: 20rem;');
@@ -101,7 +103,8 @@ let displayForeCastWeather = function(forecast) {
         <p><strong>Feels like: </strong>${forecastArr[i].main.feels_like} ℃</p>
         <p><strong>Humidity: </strong> ${forecastArr[i].main.humidity}%</p>
         <p><strong>Wind Speed: </strong> ${forecastArr[i].wind.speed} km/h </p> </div>`;
-        forecastBody.appendChild(displayDayForecast);
+        forecastBody.appendChild(forecastCard);
+        forecastCard.appendChild(displayDayForecast);
 
     }
 
@@ -119,7 +122,7 @@ let displayHistory = function() {
         <h5 class="city-name">${recentSearch[index].name}</h5>
         </div>
     <div class="card-body" id="current-status"><p><strong>Temprature: </strong>${recentSearch[index].temp} ℃  (${recentSearch[index].description})</p>
-<p><strong>Feels like: </strong>${recentSearch[index].feels_like} ℃</p>
+<p><strong>Feels like: </strong>${recentSearch[index].feelsLike} ℃</p>
 <p><strong>Humidity: </strong>${recentSearch[index].humidity}%</p>
 <p><strong>Wind Speed: </strong>${recentSearch[index].windspeed}km/h </p></div> `
         citiesBody.appendChild(historycard);
