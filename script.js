@@ -40,7 +40,7 @@ let getCurrentWeather = function(city) {
 }
 
 let getForeCastWeather = function(city) {
-    foreCastweather = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=8b78199eb8f03b49540094ab06b68369';
+    foreCastweather = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=8b78199eb8f03b49540094ab06b68369';
 
     fetch(foreCastweather).then(function(response) {
             if (!response.ok) {
